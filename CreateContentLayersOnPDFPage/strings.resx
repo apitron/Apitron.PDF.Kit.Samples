@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Dansk" xml:space="preserve">
+    <value>&lt;div&gt;DANSK&lt;/div&gt;&lt;br/&gt;
+Denne kontorstol er testet til kontorbrug.
+Stolens mål klassificeres som type B i henhold
+til EN 1335-1.&lt;br/&gt;
+Hjulene er velegnede til alle gulve.&lt;br/&gt;
+&lt;div&gt;Vedligeholdelse&lt;/div&gt;&lt;br/&gt;
+Stel: Tørres af med en fugtig klud tilsat et
+mildt rengøringsmiddel. Tør efter med en
+ren klud.&lt;br/&gt;
+Stofbetræk: Mindre pletter kan fjernes med
+tekstilrens eller en fugtig svamp og en mild
+sæbeopløsning.&lt;br/&gt;
+Læderbetræk: Støvsuges. Beskyttes mod
+direkte sollys for at forhindre udtørring. For
+at opnå det bedste resultat skal overfladen
+jævnligt tørres af og behandles med læderpleje.</value>
+  </data>
+  <data name="Deutch" xml:space="preserve">
+    <value>&lt;div&gt;DEUTSCH&lt;/div&gt;&lt;br/&gt;
+Dieser Stuhl ist für den Bürogebrauch
+getestet. Die Maße sind gem. EN 1335-1 als
+Typ B eingestuft.&lt;br/&gt;
+Die Rollen eignen sich für alle Bodenbeläge.&lt;br/&gt;
+&lt;div&gt;Pflegehinweis&lt;/div&gt;&lt;br/&gt;
+Gestell: Mit feuchtem Tuch mit mildem
+Reinigungsmittel abwischen. Mit trockenem
+Tuch nachwischen.&lt;br/&gt;
+Stoffbezug: Leichte Flecken mit Textilreinigungsmittel
+oder mit feuchtem Schwamm,
+evtl. mit milder Seifenlauge entfernen.&lt;br/&gt;
+Lederbezug: Staubsaugen. Vor direkter
+Sonneneinstrahlung schützen, um Austrocknen
+vorzubeugen. Für beste Ergebnisse
+empfehlen wir regelmäßige Pflege mit
+dem Lederpflegeset.</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>&lt;div&gt;ENGLISH&lt;/div&gt;&lt;br/&gt;
+This office work chair is tested for office
+use. The dimensions of this chair are classified
+as Type B according to EN 1335-1.
+The castors are suitable for any type of
+floor.&lt;br/&gt;
+&lt;div&gt;Care instructions&lt;/div&gt;&lt;br/&gt;
+Frame: Wipe clean with a mild soapy solution.
+Wipe dry with a clean cloth.&lt;br/&gt;
+Fabric cover: Light stains can be removed
+with a textile cleaner or a damp sponge and
+a mild soapy solution.&lt;br/&gt;
+Leather cover: Vacuum clean. Protect from
+direct sunlight to prevent drying-out. For
+best possible result, wipe clean and treat
+the surface regularly with leather
+care set.</value>
+  </data>
+  <data name="Français" xml:space="preserve">
+    <value>&lt;div&gt;FRANÇAIS&lt;/div&gt;&lt;br/&gt;
+Cette chaise de bureau professionnel a été
+testée pour un usage professionnel. Les
+dimensions de cette chaise la classent dans
+le Type B selon la norme EN 1335-1.
+Les roulettes peuvent s’utiliser sur tout
+type de sol.&lt;br/&gt;
+&lt;div&gt;Instructions d’entretien&lt;/div&gt;&lt;br/&gt;
+Structure : nettoyer avec une solution
+savonneuse, puis essuyer avec un chiffon
+sec.&lt;br/&gt;
+Housse en tissu : les petites taches
+peuvent être retirées à l’aide d’un nettoyant
+pour textile ou d’une éponge trempée dans
+une solution savonneuse.&lt;br/&gt;
+Revêtement en cuir : passer l’aspirateur.
+Pour éviter le dessèchement ne pas
+exposer à la lumière directe du soleil. Pour
+un meilleur résultat, traiter régulièrement
+avec les produits d’entretien pour cuir.</value>
+  </data>
+  <data name="Italiano" xml:space="preserve">
+    <value>&lt;div&gt;ITALIANO&lt;/div&gt;&lt;br/&gt;
+Questa sedia da ufficio è testata per l’uso
+negli uffici. Per le sue dimensioni, questa
+sedia è classificata di tipo B, secondo la
+norma EN 1335-1.&lt;br/&gt;
+Le rotelle sono adatte a tutti i tipi di superfici.&lt;br/&gt;
+&lt;div&gt;Manutenzione&lt;/div&gt;&lt;br/&gt;
+Struttura: pulisci con una soluzione di
+acqua e sapone poco concentrata. Asciuga
+con un panno pulito.&lt;br/&gt;
+Rivestimento in tessuto: le macchie leggere
+si possono eliminare con un detergente per
+tessuti o con una spugna inumidita con acqua
+o con una soluzione poco concentrata
+di acqua e sapone.&lt;br/&gt;
+Rivestimento in pelle: passa l’aspirapolvere.
+Per prevenire l’essiccazione, proteggi
+l’articolo dalla luce diretta del sole. Pulisci e
+tratta regolarmente la superficie con il set
+per il trattamento della pelle.</value>
+  </data>
+  <data name="Nederlands" xml:space="preserve">
+    <value>&lt;div&gt;NEDERLANDS&lt;/div&gt;&lt;br/&gt;
+Deze bureaustoel is getest voor gebruik
+op kantoor. De afmetingen van de stoel
+zijn geclassificeerd als Type B volgens EN
+1335-1.&lt;br/&gt;
+De wielen zijn geschikt voor alle soorten
+vloeren.&lt;br/&gt;
+&lt;div&gt;Onderhoud&lt;/div&gt;&lt;br/&gt;
+Onderstel: afnemen met een doekje met
+wat mild schoonmaakmiddel. Nadrogen met
+een droge doek.&lt;br/&gt;
+Stoffen bekleding: lichte vlekken kunnen
+worden verwijderd met textielreiniger of
+met een sponsje met water of een milde
+zeepoplossing.&lt;br/&gt;
+Leren bekleding: stofzuigen. Bescherm de
+bekleding tegen direct zonlicht om uitdrogen
+te voorkomen. Voor het beste resultaat
+regelmatig reinigen en onderhouden met
+de lederonderhoudset.</value>
+  </data>
+  <data name="Русский" xml:space="preserve">
+    <value>&lt;div&gt;РУССКИЙ&lt;/div&gt;&lt;br/&gt;
+Этот рабочий стул протестирован и
+одобрен для использования в офисе.
+Размеры этого стула классифицируются
+как Тип В в соответствии со стандартом
+EN 1335-1.&lt;br/&gt;
+Колесики подходят для любого типа
+напольных покрытий.&lt;br/&gt;
+&lt;div&gt;Инструкции по уходу&lt;/div&gt;&lt;br/&gt;
+Каркас: протирать с использованием
+слабого мыльного раствора. Затем
+вытирать сухой чистой тканью.&lt;br/&gt;
+Текстильная обивка: слабые загрязнения
+можно удалить чистящим средством
+для текстиля или с помощью губки,
+смоченной в слабом мыльном растворе.&lt;br/&gt;
+Кожаная обивка: чистить пылесосом.
+Во избежание пересыхания защищать
+от воздействия прямых солнечных
+лучей. Для наилучшего результата
+рекомендуется протирать обивку и
+регулярно обрабатывать ее поверхность,
+используя набор для ухода за кожаной
+мебелью.</value>
+  </data>
+</root>
