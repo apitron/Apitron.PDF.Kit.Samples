@@ -35,6 +35,7 @@ namespace FreeTextAnnotationWithCustomAppearance
                 Page page = new Page();
                 
                 FreeTextAnnotation annotation = new FreeTextAnnotation(new Boundary(annotationX, annotationY, annotationX +annotationWidth, annotationY+annotationHeight), AnnotationFlags.ReadOnly);                
+
                 annotation.Title = "Apitron";
                 annotation.Intent = IntentStyle.FreeText;                
                
@@ -67,9 +68,11 @@ namespace FreeTextAnnotationWithCustomAppearance
             }
         }
 
+
         private static FixedContent CreateNormalAppearance(double width, double height)
         {
             FixedContent fixedContent = new FixedContent(Guid.NewGuid().ToString("N"), new Boundary(0, 0, width, height));
+
 
             TextBlock textBlock = new TextBlock("Free text annotation created using Apitron PDF Kit - normal");
             textBlock.Border = Border.Solid;
@@ -86,7 +89,7 @@ namespace FreeTextAnnotationWithCustomAppearance
         private static FixedContent CreateRolloverAppearance(double width, double height)
         {
             FixedContent fixedContent = new FixedContent(Guid.NewGuid().ToString("N"), new Boundary(0, 0, width, height));
-
+          
             TextBlock textBlock = new TextBlock("Free text annotation created using Apitron PDF Kit - rollover");
             textBlock.Border = Border.Solid;
             textBlock.BorderColor = RgbColors.Blue;
