@@ -52,6 +52,12 @@
                         Click="OnNavigationButtonClick" />
                 <Button Content=">|" CommandParameter="Last" Margin="3,3,3,3" FontWeight="Bold" BorderBrush="Azure" Padding="5"
                         Click="OnNavigationButtonClick" />
+                <Separator Width="2" Margin="0,2"/>
+                <CheckBox x:Name="drawText" Content="Draw text" IsChecked="{Binding DrawText, Mode=TwoWay}"  VerticalAlignment="Stretch" Padding="5"/>
+                <CheckBox x:Name="drawGrapics" Content="Draw paths"  IsChecked="{Binding DrawPaths, Mode=TwoWay}" VerticalAlignment="Stretch" Padding="5"/>
+                <CheckBox x:Name="drawImages" Content="Draw images"  IsChecked="{Binding DrawImages, Mode=TwoWay}" VerticalAlignment="Stretch" Padding="5"/>
+                <CheckBox x:Name="drawAnnotations" Content="Draw annotations"  IsChecked="{Binding DrawAnnotations, Mode=TwoWay}" VerticalAlignment="Stretch" Padding="5"/>
+                <CheckBox x:Name="drawAnnotationsText" Content="Draw annotations text"  IsChecked="{Binding DrawAnnotationsText, Mode=TwoWay}" VerticalAlignment="Stretch" Padding="5"/>
             </ToolBar>
         </StackPanel>
         <GridSplitter HorizontalAlignment="Right" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="1"

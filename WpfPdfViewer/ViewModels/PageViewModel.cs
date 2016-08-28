@@ -36,6 +36,12 @@ namespace Apitron.WpfPdfViewer.ViewModels
         private byte[] image;
 
         private ObservableCollection<IAnnotationViewModel> annotations;
+        private bool drawText;
+        private bool drawImages;
+        private bool drawPaths;
+        private bool drawAnnotations;
+        private bool drawAnnotationsText;
+
 
         #endregion
 
@@ -165,6 +171,12 @@ namespace Apitron.WpfPdfViewer.ViewModels
             this.image = new byte[desiredWidth*desiredHeight*4];
 
             RenderingSettings renderingSettings = new RenderingSettings();
+            renderingSettings.DrawText = this.DrawText;
+            renderingSettings.DrawImages = this.DrawImages;
+            renderingSettings.DrawPaths = this.DrawPaths;
+            renderingSettings.DrawAnotations = this.DrawAnnotations;
+            renderingSettings.AnnotationRenderingSettings = new RenderingSettings();
+            renderingSettings.AnnotationRenderingSettings.DrawText = this.DrawAnnotationsText;
             // Uncomment to not draw annotations
             // renderingSettings.DrawAnotations = false;
 
@@ -204,6 +216,70 @@ namespace Apitron.WpfPdfViewer.ViewModels
                     }));
                     GC.Collect();
                 }, this.tokenSource.Token);
+        }
+
+        public bool DrawText
+        {
+            get
+            {
+                return drawText;
+            }
+            set
+            {
+                drawText = value;
+                OnPropertyChanged(nameof(DrawText));
+            }
+        }
+        public bool DrawPaths
+        {
+            get
+            {
+                return drawPaths;
+            }
+            set
+            {
+                drawPaths = value;
+                OnPropertyChanged(nameof(DrawPaths));
+            }
+        }
+
+        public bool DrawImages
+        {
+            get
+            {
+                return drawImages;
+            }
+            set
+            {
+                drawImages = value;
+                OnPropertyChanged(nameof(DrawImages));
+            }
+        }
+
+        public bool DrawAnnotations
+        {
+            get
+            {
+                return drawAnnotations;
+            }
+            set
+            {
+                drawAnnotations = value;
+                OnPropertyChanged(nameof(DrawAnnotations));
+            }
+        }
+
+        public bool DrawAnnotationsText
+        {
+            get
+            {
+                return drawAnnotationsText;
+            }
+            set
+            {
+                drawAnnotationsText = value;
+                OnPropertyChanged(nameof(DrawAnnotationsText));
+            }
         }
 
         /// <summary>

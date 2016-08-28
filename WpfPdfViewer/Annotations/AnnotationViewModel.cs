@@ -78,7 +78,7 @@ namespace Apitron.WpfPdfViewer.Annotations
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public ApitronCommand MouseDown
+        public ICommand MouseDown
         {
             get
             {
@@ -86,12 +86,12 @@ namespace Apitron.WpfPdfViewer.Annotations
             }
         }
 
-        public ApitronCommand MouseUp
+        public ICommand MouseUp
         {
             get { return mouseUp; }
         }
 
-        public ApitronCommand MouseMove
+        public ICommand MouseMove
         {
             get
             {

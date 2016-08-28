@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.Windows.Input;
 using Apitron.PDF.Kit;
 using Apitron.PDF.Rasterizer;
 using Apitron.PDF.Rasterizer.Navigation;
@@ -15,6 +16,20 @@ namespace Apitron.WpfPdfViewer.ViewModels
         private Document document;
         private FixedDocument fixedDocument;
         private Dictionary<Page, PageViewModel> pageViewCache;
+        private bool drawText;
+        private bool drawImages;
+        private bool drawPaths;
+        private bool drawAnnotations;
+        private bool drawAnnotationsText;
+
+        #endregion
+
+        #region ctor
+
+        public DocumentViewModel()
+        {
+            drawText = drawImages = drawPaths = drawAnnotations = drawAnnotationsText = true;
+        }
 
         #endregion
 
@@ -112,6 +127,12 @@ namespace Apitron.WpfPdfViewer.ViewModels
                     if (!pageViewCache.TryGetValue(this.Page, out result))
                     {
                         result = new PageViewModel(this.Page, this.NativePage);
+                        result.DrawText = DrawText;
+                        result.DrawAnnotations = DrawAnnotations;
+                        result.DrawPaths = DrawPaths;
+                        result.DrawImages = DrawImages;
+                        result.DrawAnnotationsText = DrawAnnotationsText;
+
                         pageViewCache.Add(this.Page, result);
                     }
                 }
@@ -170,9 +191,93 @@ namespace Apitron.WpfPdfViewer.ViewModels
             }
         }
 
+        public bool DrawText
+        {
+            get { return drawText; }
+
+            set
+            {
+                drawText = value;
+                OnPropertyChanged(nameof(DrawText));
+
+                ClearPageViewsCache();
+                InvalidateCurrentPage();
+            }
+        }
+
+        public bool DrawPaths
+        {
+            get { return drawPaths; }
+
+            set
+            {
+                drawPaths = value;
+                OnPropertyChanged(nameof(DrawPaths));
+
+                ClearPageViewsCache();
+                InvalidateCurrentPage();
+            }
+        }
+
+        public bool DrawAnnotations
+        {
+            get { return drawAnnotations; }
+
+            set
+            {
+                drawAnnotations = value;
+                OnPropertyChanged(nameof(DrawAnnotations));
+
+                ClearPageViewsCache();
+                InvalidateCurrentPage();
+            }
+        }
+
+        public bool DrawAnnotationsText
+        {
+            get { return drawAnnotationsText; }
+
+            set
+            {
+                drawAnnotationsText = value;
+                OnPropertyChanged(nameof(DrawAnnotationsText));
+
+                ClearPageViewsCache();
+                InvalidateCurrentPage();
+            }
+        }
+
+        public bool DrawImages
+        {
+            get { return drawImages; }
+
+            set
+            {
+                drawImages = value;
+                OnPropertyChanged(nameof(DrawImages));
+
+                ClearPageViewsCache();
+
+                InvalidateCurrentPage();
+            }
+        }
+
         #endregion
 
         #region Private Members
+
+        private void InvalidateCurrentPage()
+        {
+           OnPropertyChanged(nameof(PageViewModel));
+        }
+
+        private void ClearPageViewsCache()
+        {
+            if (pageViewCache!=null && pageViewCache.Count > 0)
+            {
+                pageViewCache.Clear();
+            }
+        }
 
         /// <summary>
         ///   Navigators the on page changed.
