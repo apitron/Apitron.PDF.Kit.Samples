@@ -1,0 +1,171 @@
+﻿@model string
+
+@section Scripts
+{
+    <script type="text/javascript" src="~/Scripts/PageContext.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            this.pageContext = new PageContext();
+            this.pageContext.init('@(ViewBag.ServiceUrl)');
+        });
+    </script>
+}
+<br/>
+<div>
+    <h4>Start by choosing the files for further processing</h4>
+</div>
+<div class="jumbotron">
+    <div class="input-group input-group-lg">
+        <span class="input-group-addon"><span class="glyphicon glyphicon-file"></span></span>
+        <input type="file" class="form-control" id="sourceFiles" accept=".pdf" multiple/>
+    </div>
+</div>
+
+<div hidden id="actionsContainer"> 
+    <div>
+        <h4>Select the desired action</h4>
+    </div>
+    <div class="jumbotron">
+        <button class="btn btn-primary btn-lg" type="button" id="sign" data-toggle="modal" data-target="#signingDialog">Add signature</button>
+        <button class="btn btn-primary btn-lg" type="button" id="watermark" data-toggle="modal" data-target="#watermarkDialog">Watermark</button>
+    </div>
+</div>
+
+<div hidden id="resultsContainer">
+    <div>
+        <h4>Download processed files</h4>
+    </div>
+    <div class="jumbotron" id="downloadLinksContainer">
+    </div>
+</div>
+
+<div hidden id="errorContainer">
+    <div>
+        <h4>There was an error while processing your request</h4>
+    </div>
+    <div class="jumbotron" id="errorContentContainer">
+    </div>
+</div>
+
+<div id="loadingBackdrop" class="modal-backdrop" style="display: none; background-color: rgba(0, 0, 0, 0.5);">
+    <table style="width: 100%; height: 100%">
+        <tr style="height: auto">
+            <td colspan="3" style="width: 100%"/>
+        </tr>
+        <tr style="height: 150px;">
+            <td colspan="3">
+                <div style="margin-left: auto; margin-right: auto; width: 250px; padding-top: 25px; height: 100%; text-align: center; border-radius: 5px; border-width: 1px; border-color: black; background-color: rgba(0, 0, 0, 0.2);">
+                        <img src="~/Images/gears.gif" width="60" height="60" />
+                        <h4 id="operationStatus"></h4>
+                </div>
+            </td>
+        </tr>
+        <tr style="height: auto">
+            <td colspan="3" style="width: 100%"/>
+        </tr>
+    </table>
+</div>
+
+<!-- watermark modal -->
+<div id="watermarkDialog" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Choose watermark properties</h4>
+            </div>
+            <div class="modal-body col-md-12">
+                <div class="form-group">
+                    <label for="watermarkText" class="control-label">Watermark text</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-certificate"></span></span>
+                        <input type="text" id="watermarkText" class="form-control" placeholder="my watermark"/>
+                    </div>
+                    <div class="text-center">
+                        <h3>or</h3>
+                    </div>
+                    <label for="watermarkImage" class="control-label">Watermark image</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-file"></span></span>
+                        <input type="file" class="form-control" id="watermarkImage" accept=".jpg,.png,.bmp,.jpeg"/>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info col-md-12" disabled data-dismiss="modal" id="proceedWithWatermark">Proceed</button>
+            </div>
+        </div>
+    </div>
+</div>
+    
+
+<!-- signing modal -->
+<div id="signingDialog" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Choose signing key and signature's appearance</h4>
+            </div>
+            <div class="modal-body col-md-12">
+                <div class="form-group row">
+                    <label for="existingKeys" class="control-label col-md-7">Available server keys</label>
+                    <label for="signingCert" class="control-label col-md-5">My certificate</label>
+                    <div class="input-group col-md-5">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-certificate"></span></span>
+                        <select class="form-control" id="existingKeys">
+                        </select>
+                    </div>
+                    <div class="text-center col-md-2">
+                        <h4>or</h4>
+                    </div>
+                    <div class="input-group col-md-5">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-file"></span></span>
+                        <input type="file" class="form-control" id="signingCert" accept=".pfx,.p12" />
+                    </div>
+                    <br/>
+                    <label for="signingKeyPassword" class="control-label col-md-12">Key password</label>
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-book"></span></span>
+                            <input type="password" id="signingKeyPassword" class="form-control" style="max-width:100%" placeholder="signing password" />
+                        </div>
+                    </div>
+                    <hr/>
+                    <label for="signatureText" class="control-label col-md-12">Signature text</label>
+                    <div class="input-group col-md-12">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-book"></span></span>
+                        <textarea id="signatureText" class="form-control" style="max-width:100%" placeholder="signature text" ></textarea>
+                    </div>
+                    <div class="text-center col-md-12">
+                        <h4>or</h4>
+                    </div>
+                    <label for="signatureImage" class="control-label col-md-12">Signature image</label>
+                    <div class="input-group col-md-12">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-file"></span></span>
+                        <input type="file" class="form-control" style="max-width:100%" id="signatureImage" accept=".jpg,.png,.bmp,.jpeg"/>
+                    </div>
+                    <hr/>
+                    <label for="signatureLeft" class="control-label col-md-12">Signature boundary:</label>
+                    <div class="input-group col-md-3">
+                        <input type="number" id="signatureLeft" class="form-control" placeholder="Left"/>
+                    </div>
+                    <div class="input-group col-md-3">
+                        <input type="number" id="signatureBottom" class="form-control" placeholder="Bottom"/>
+                    </div>
+                    <div class="input-group col-md-3">
+                        <input type="number" id="signatureRight" class="form-control" placeholder="Right" />
+                    </div>
+                    <div class="input-group col-md-3">
+                        <input type="number" id="signatureTop" class="form-control" placeholder="Top"/>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info col-md-12" disabled data-dismiss="modal" id="proceedWithSignature">Proceed</button>
+            </div>
+        </div>
+    </div>
+</div>
