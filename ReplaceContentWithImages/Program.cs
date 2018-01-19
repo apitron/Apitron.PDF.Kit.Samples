@@ -1,16 +1,14 @@
 ﻿using Apitron.PDF.Kit;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
-using System.Threading.Tasks;
 using Apitron.PDF.Kit.FixedLayout;
 using Apitron.PDF.Kit.FixedLayout.Content;
+using Apitron.PDF.Kit.FlowLayout;
+using Apitron.PDF.Kit.FlowLayout.Content;
+using Apitron.PDF.Kit.Styles;
+using Apitron.PDF.Kit.Styles.Appearance;
 using Apitron.PDF.Rasterizer;
 using Apitron.PDF.Rasterizer.Configuration;
 
@@ -27,20 +25,58 @@ namespace ReplaceContentWithImages
                     // CropBox instruction is used to mark the content cut from the source
                     // and create specialized PDF doc based on it for custom conversion to image.
                     // In the simplest case, when we replace the entire page, it coincides with the
-                    // page boundary. Otherwise you should mark the desired part of the content 
-                    // based on its exact location within the containing source.
+                    // page boundary, otherwise it should coincide with the parent content's boundary.
                     // See the examples below:
                     // The first converts the entire page using pre-rendered image,
-                    // the second replaces only the part of the page and
+                    // the second replaces the page and
                     // uses external renderer (Apitron PDF Rasterizer).
+                    // Another, completely different example
+                    // shows how to convert the newly generated content to an image and
+                    // avoid saving it to PDF in original form - a kind of flattening.
 
-                    // 1. page boundary and predefined image
-                    doc.Pages[0].Content.SetProcessingInstruction(ProcessingInstructions.ClippedContent.PdfToImageCropBox, new Boundary(doc.Pages[0].Boundary.MediaBox) );
+                    // 1. Page boundary and predefined image
+                    doc.Pages[0].Content.SetProcessingInstruction(ProcessingInstructions.ClippedContent.PdfToImageCropBox, doc.Pages[0].Boundary.MediaBox);
                     doc.Pages[0].Content.SetProcessingInstruction(ProcessingInstructions.ClippedContent.PdfToImageConverter, ConvertToImage);
 
-                    // 2. custom cropbox and external renderer
-                    doc.Pages[1].Content.SetProcessingInstruction(ProcessingInstructions.ClippedContent.PdfToImageCropBox, new Boundary(350,600,550,750) );
+                    // 2. Page boundary and external renderer
+                    doc.Pages[1].Content.SetProcessingInstruction(ProcessingInstructions.ClippedContent.PdfToImageCropBox, doc.Pages[1].Boundary.MediaBox);
                     doc.Pages[1].Content.SetProcessingInstruction(ProcessingInstructions.ClippedContent.PdfToImageConverter, ConvertToImageUsingExternalRenderer);
+
+                    // 3. Original generated content + "flattened" generated content, custom boundary and external renderer
+                    Apitron.PDF.Kit.FixedLayout.Page page2 = new Apitron.PDF.Kit.FixedLayout.Page();
+                    double blockWidth = page2.Boundary.MediaBox.Width - 20;
+                    double blockHeight = (page2.Boundary.MediaBox.Height - 20)/3.0;
+                    // Add the first block of text, it will be saved as is, 
+                    // blocks are added starting from the bottom of the page to the top
+                    page2.Content.SetTranslate(10,10);
+                    page2.Content.AppendContentElement(new Section(ContentElement.FromMarkup(resources.LoremIpsumText)) {Align = Align.Justify}, blockWidth, blockHeight  );
+
+                    // Add the second block, it will be converted to image using the chosen
+                    // renderer when saving, red color is used for visibility.
+                    page2.Content.SetTranslate(0, blockHeight);
+                    // Create new clipped content object with desired width and height
+                    // and add our text block into it.
+                    // After that we add neccessary processing instructions which will 
+                    // affect the content generation during the PDF saving process.
+                    ClippedContent toBeFlattenedContent = new ClippedContent(0,0,blockWidth,blockHeight);
+                    toBeFlattenedContent.AppendContentElement(new Section(ContentElement.FromMarkup(resources.LoremIpsumText))
+                    {
+                        Color = RgbColors.Red,
+                        Align = Align.Justify
+                    }, 
+                    blockWidth, blockHeight);
+
+                    toBeFlattenedContent.SetProcessingInstruction(ProcessingInstructions.ClippedContent.PdfToImageCropBox, new Boundary(0,0, blockWidth, blockHeight));
+                    toBeFlattenedContent.SetProcessingInstruction(ProcessingInstructions.ClippedContent.PdfToImageConverter, ConvertToImageUsingExternalRenderer);
+
+                    page2.Content.AppendContent(toBeFlattenedContent);
+
+                    // add the third block using the same approach as for the first block
+                    page2.Content.SetTranslate(0, blockHeight);
+                    page2.Content.AppendContentElement(new Section(ContentElement.FromMarkup(resources.LoremIpsumText)) {Align = Align.Justify}, blockWidth, blockHeight);
+
+                    // add the new page
+                    doc.Pages.Add(page2);
 
                     doc.Save(File.Create("out.pdf"));
                 }
@@ -74,15 +110,11 @@ namespace ReplaceContentWithImages
             Apitron.PDF.Rasterizer.Document doc = new Document(stream);
             
             // render the page and return image stream here,
-            // we'll use the 96 DPI resolution for rendering
+            // we'll use the 144 DPI resolution for rendering,
+            // so the difference between the first and second page will be clearly seen
             MemoryStream imageStream = new MemoryStream();
-            using(Bitmap bitmap = doc.Pages[0].Render(new Resolution(96, 96), new RenderingSettings()))
+            using(Bitmap bitmap = doc.Pages[0].Render(new Resolution(144, 144), new RenderingSettings()))
             {
-                // draw red rect around to mark the replaced part
-                using (Graphics graphics = Graphics.FromImage(bitmap))
-                {
-                    graphics.DrawRectangle(Pens.Red,0,0,bitmap.Width-1,bitmap.Height-1);
-                }
                 bitmap.Save(imageStream, ImageFormat.Bmp);
             }
             return imageStream;
