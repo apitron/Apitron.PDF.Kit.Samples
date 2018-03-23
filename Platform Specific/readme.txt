@@ -1,0 +1,1 @@
+Sample projects are sorted by platform first and then by IDE or build tool needed to open, build and run it. 
