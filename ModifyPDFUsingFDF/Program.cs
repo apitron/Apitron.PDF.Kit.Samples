@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using Apitron.PDF.Kit;
 using Apitron.PDF.Kit.FixedLayout;
 using Apitron.PDF.Kit.FixedLayout.Resources.ColorSpaces.Device;
@@ -360,7 +353,7 @@ namespace ModifyPDFUsingFDF
                 // create new page and add some content
                 Page page = new Page();
 
-                page.Content.Translate(10, 700);
+                page.Content.SetTranslation(10, 700);
                 page.Content.AppendContentElement(
                     new TextBlock(
                         @"This page is used as a template in FDF document, its name is 'page1'. You can manage templates using Tools->Document Processing->Page Templates")

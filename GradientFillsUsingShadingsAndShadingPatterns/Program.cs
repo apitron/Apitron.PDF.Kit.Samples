@@ -65,7 +65,7 @@ namespace GradientFillsUsingShadingsAndShadingPatterns
         private static void DrawShading(Page page, string resourceName, double xOffset, double yOffset)
         {
             page.Content.SaveGraphicsState();
-            page.Content.Translate(xOffset, yOffset);
+            page.Content.SetTranslation(xOffset, yOffset);
             page.Content.PaintShading(resourceName, Path.CreateRoundRect(0, 0, 180, 180, 10, 10, 10, 10));
             page.Content.RestoreGraphicsState();
         }       
@@ -82,7 +82,7 @@ namespace GradientFillsUsingShadingsAndShadingPatterns
             content.FillPath(Path.CreateRect(0, 0, 180, 180));
             
             // draw text using shading pattern as a fill 
-            content.Translate(3, 85);
+            content.SetTranslation(3, 85);
             TextObject txt = new TextObject(StandardFonts.Helvetica, 25);
             // set the fill colorspace to Pattern in order to use the pattern as a color
             txt.SetNonStrokingColorSpace(PredefinedColorSpaces.Pattern);
@@ -187,7 +187,5 @@ namespace GradientFillsUsingShadingsAndShadingPatterns
 
             return axialShadingLinear;
         }
-
-        
     }
 }

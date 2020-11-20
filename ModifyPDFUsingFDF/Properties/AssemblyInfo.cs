@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Apitron LTD.")]
 [assembly: AssemblyProduct("ModifyPDFUsingFDF")]
-[assembly: AssemblyCopyright("Copyright Apitron LTD ©  2016")]
+[assembly: AssemblyCopyright("Copyright Apitron LTD ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

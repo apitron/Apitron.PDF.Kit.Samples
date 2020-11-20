@@ -35,11 +35,9 @@
   <ItemGroup>
     <Reference Include="Apitron.PDF.Kit, Version=1.0.86.0, Culture=neutral, PublicKeyToken=6e759dbb0039406e, processorArchitecture=MSIL">
       <HintPath>packages\Apitron.PDF.Kit.1.0.86\lib\net452\Apitron.PDF.Kit.dll</HintPath>
-      <Private>True</Private>
     </Reference>
-    <Reference Include="Apitron.PDF.Rasterizer, Version=3.0.112.0, Culture=neutral, PublicKeyToken=6e759dbb0039406e, processorArchitecture=MSIL">
-      <HintPath>packages\Apitron.PDF.Rasterizer.3.0.112.0\lib\net452\Apitron.PDF.Rasterizer.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Apitron.PDF.Rasterizer, Version=3.0.154.0, Culture=neutral, PublicKeyToken=6e759dbb0039406e, processorArchitecture=MSIL">
+      <HintPath>packages\Apitron.PDF.Rasterizer.3.0.154\lib\net452\Apitron.PDF.Rasterizer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

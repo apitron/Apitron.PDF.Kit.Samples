@@ -32,7 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Apitron.PDF.Kit">
+    <Reference Include="Apitron.PDF.Kit, Version=1.0.20.0, Culture=neutral, PublicKeyToken=6e759dbb0039406e, processorArchitecture=MSIL">
       <HintPath>packages\Apitron.PDF.Kit.1.0.20\lib\net45\Apitron.PDF.Kit.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -50,6 +50,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="application-license.txt" />
+    <Content Include="domain-license.txt" />
+    <Content Include="server-license.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

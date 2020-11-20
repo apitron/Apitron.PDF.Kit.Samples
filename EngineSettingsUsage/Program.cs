@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Apitron.PDF.Kit;
 using Apitron.PDF.Kit.Configuration;
 using Apitron.PDF.Rasterizer;
@@ -44,7 +40,7 @@ namespace EngineSettingsUsage
 
             // registers additional font in library's font cache if don't have a user font folder
             // or can't create one. Font name and parameters will be read from font file.
-            using (Stream fontStream = File.Open("c:\\fonts\\Consolas.ttf", FileMode.Open))
+            using (Stream fontStream = File.Open(@"c:\Windows\fonts\Consolas.ttf", FileMode.Open))
             {
                 EngineSettings.RegisterUserFont(fontStream);
             }

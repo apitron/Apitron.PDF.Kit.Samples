@@ -26,9 +26,9 @@ namespace ClippingMaskUsage
             // set current fill color
             clippedContent.SetDeviceNonStrokingColor(RgbColors.Red.Components);
             // position the text
-            clippedContent.Translate(0, 20);
+            clippedContent.SetTranslation(0, 20);
             clippedContent.AppendText(clipText);
-            clippedContent.Translate(0, -30);
+            clippedContent.SetTranslation(0, -30);
             // draw image through our clipping
             clippedContent.AppendImage("gradient",0,0,200,200);
 
@@ -67,7 +67,7 @@ namespace ClippingMaskUsage
             // create page and append our clipped contents to it
             Page page = new Page();
             page.Content.AppendContent(DrawContentUsingClippingPath());             
-            page.Content.Translate(250,700);
+            page.Content.SetTranslation(250,700);
             page.Content.AppendContent(DrawContentUsingTextClipping());
 
             // append page to document and save it

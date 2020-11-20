@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Data.Common;
 using System.IO;
-using System.IO.Pipes;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Apitron.PDF.Kit;
 using Apitron.PDF.Kit.FixedLayout;
 using Apitron.PDF.Kit.FixedLayout.Resources;

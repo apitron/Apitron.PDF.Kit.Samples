@@ -53,7 +53,7 @@ namespace ICCProfileUsage
                     page.Content.SetDeviceStrokingColor(new double[] { 0, 0, 0, 1 });
 
                     // fill and stroke the path again
-                    page.Content.Translate(0,-120);
+                    page.Content.SetTranslation(0,-120);
                     page.Content.FillAndStrokePath(rectangle);
                     
                     //save document

@@ -33,9 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Apitron.PDF.Kit, Version=1.0.27.0, Culture=neutral, PublicKeyToken=6e759dbb0039406e, processorArchitecture=MSIL">
-      <HintPath>packages\Apitron.PDF.Kit.1.0.27\lib\net451\Apitron.PDF.Kit.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Apitron.PDF.Kit, Version=2.0.37.0, Culture=neutral, PublicKeyToken=6e759dbb0039406e, processorArchitecture=MSIL">
+      <HintPath>packages\Apitron.PDF.Kit.2.0.37\lib\net452\Apitron.PDF.Kit.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

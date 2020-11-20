@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Apitron.PDF.Kit;
 using Apitron.PDF.Kit.FixedLayout;
 using Apitron.PDF.Kit.FixedLayout.Content;
@@ -38,7 +33,7 @@ namespace WorkingWithTransparentImages
                 path.AppendRectangle(0, 0, stripeWidth, maskedImage.Height);
 
                 // set initial translation
-                pageContent.Translate(20, 300);
+                pageContent.SetTranslation(20, 300);
                 // save state in order to restore it later for image
                 pageContent.SaveGraphicsState();                                
 
@@ -47,7 +42,7 @@ namespace WorkingWithTransparentImages
                 {                    
                     pageContent.SetDeviceNonStrokingColor(new double[] {0.3});
                     pageContent.FillPath(path);
-                    pageContent.Translate(doubleStripeWidth, 0);
+                    pageContent.SetTranslation(doubleStripeWidth, 0);
                 }
                 
                 pageContent.RestoreGraphicsState();
@@ -59,6 +54,6 @@ namespace WorkingWithTransparentImages
 
             Process.Start("image.pdf");
         }
-     
+
     }
 }

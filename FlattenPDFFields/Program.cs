@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO;
 using Apitron.PDF.Kit;
 using Apitron.PDF.Kit.FixedLayout;

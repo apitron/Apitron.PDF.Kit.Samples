@@ -34,8 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Apitron.PDF.Kit, Version=1.0.59.0, Culture=neutral, PublicKeyToken=6e759dbb0039406e, processorArchitecture=MSIL">
-      <HintPath>..\PDFContentEditing\packages\Apitron.PDF.Kit.1.0.59\lib\net452\Apitron.PDF.Kit.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\Apitron.PDF.Kit.1.0.59\lib\net452\Apitron.PDF.Kit.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

@@ -130,26 +130,26 @@ namespace ResizeAndStampPDF
             {
                 case PageRotate.Rotate90:
                 {
-                    page.Content.SetRotate(Math.PI/2.0f);
+                    page.Content.SetRotation(Math.PI/2.0f);
                     // set current position on page
-                    page.Content.Translate((page.Boundary.MediaBox.Height - section.Width.Value)/2.0,
+                    page.Content.SetTranslation((page.Boundary.MediaBox.Height - section.Width.Value)/2.0,
                         -page.Boundary.MediaBox.Right);
                     break;
                 }
                 case PageRotate.Rotate180:
                 {
-                    page.Content.SetRotate(Math.PI);
+                    page.Content.SetRotation(Math.PI);
                     // set current position on page
-                    page.Content.Translate(
+                    page.Content.SetTranslation(
                         -page.Boundary.MediaBox.Width + ((page.Boundary.MediaBox.Width - section.Width.Value)/2.0),
                         -page.Boundary.MediaBox.Height);
                     break;
                 }
                 case PageRotate.Rotate270:
                 {
-                    page.Content.SetRotate(-Math.PI/2.0f);
+                    page.Content.SetRotation(-Math.PI/2.0f);
                     // set current position on page
-                    page.Content.Translate(
+                    page.Content.SetTranslation(
                         -page.Boundary.MediaBox.Height + (page.Boundary.MediaBox.Height - section.Width.Value)/2.0,
                         page.Boundary.MediaBox.Left);
 
@@ -159,7 +159,7 @@ namespace ResizeAndStampPDF
                 default:
                 {
                     // set current position on page
-                    page.Content.Translate((page.Boundary.MediaBox.Width - section.Width.Value)/2.0,
+                    page.Content.SetTranslation((page.Boundary.MediaBox.Width - section.Width.Value)/2.0,
                         page.Boundary.MediaBox.Bottom);
                     break;
                 }
@@ -199,4 +199,3 @@ namespace ResizeAndStampPDF
         #endregion
     }
 }
-
